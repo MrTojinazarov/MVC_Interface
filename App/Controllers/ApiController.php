@@ -13,8 +13,7 @@ class ApiController
 
     public function store()
     {
-        dd($_POST);
-        // return api($_POST);
+        return api($_POST);
     }
 }
 

@@ -141,6 +141,23 @@ class ProductController
             }
         }
     }
+
+    public function showUpdateApi()
+    {
+        if(isset($_POST['ok']) && !empty($_POST['id'])){
+
+            $id = $_POST['id'];
+
+            $product = Product::showOne($id);
+            if($product){
+                return view("/showUpdateApi", "Show Api", $product);
+                exit();
+            }else{
+                echo "Bunday product yoq";
+            }
+
+        }
+    }
  
 }
 

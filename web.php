@@ -19,10 +19,10 @@ Route::post("/createProduct", [ProductController::class, "createProduct"]);
 Route::post("/updateProduct", [ProductController::class, "updateProduct"]);
 Route::post("/update", [ProductController::class, "update"]);
 Route::post("/deleteProduct", [ProductController::class, "deleteProduct"]);
-
+Route::post("/showUpdateApi", [ProductController::class, "showUpdateApi"]);
 // Api
 
 Route::get('/api', [ApiController::class, "index"]);
-Route::post("/", [ProductController::class, "store"]);
+Route::post("/ShowupApi", [ApiController::class, "store"]);
 
 ?>

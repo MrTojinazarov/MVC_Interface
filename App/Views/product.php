@@ -29,6 +29,10 @@
                         <input type="hidden" name="id" value="<?= $model->id?>">
                         <button type="submit" name="ok" class="btn btn-outline-primary" style="width: 100px;">Update</button>
                     </form>
+                    <form action="showUpdateApi" method="POST">
+                        <input type="hidden" name="id" value="<?= $model->id?>">
+                        <button type="submit" name="ok" class="btn btn-outline-primary" style="width: 100px;">Show Update Api</button>
+                    </form>
                     <form action="deleteProduct" method="POST">
                         <input type="hidden" name="id" value="<?= $model->id?>">
                         <button type="submit" name="ok" class="btn btn-outline-warning" style="width: 100px;">Delete</button>
