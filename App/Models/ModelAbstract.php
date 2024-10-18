@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Models;
-
+use App\Database\Database;
 use App\Models\ModelInterface;
 use PDO;
-abstract class ModelAbstract implements ModelInterface
+abstract class ModelAbstract extends Database implements ModelInterface 
 {
     abstract public static function getAll();
     abstract public static function create($data);

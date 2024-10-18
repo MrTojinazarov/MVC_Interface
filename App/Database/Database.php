@@ -3,7 +3,7 @@ namespace App\Database;
 
 use PDO;
 
-trait Database 
+class Database 
 {
     public static $host = "localhost";
     public static $username = "root";

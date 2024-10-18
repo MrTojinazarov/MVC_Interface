@@ -3,13 +3,10 @@
 namespace App\Models;
 
 use App\Models\ModelAbstract;
-use App\Database\Database;
 use PDO;
 
 class Model extends ModelAbstract
 {
-    use Database;
-
     protected static $table;
 
     public static function getAll()
