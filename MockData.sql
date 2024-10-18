@@ -13,8 +13,8 @@ CREATE TABLE books (
 
 
 INSERT INTO books (id, name, author, title, photo, genre) VALUES
-('Sirojiddin', 'Abdulla Qodiriy', "Inson tug'ilibtiki vafot etadi, uni hayotiy yollari tasvirlangan", 'public/img/15. Облака.jpg', 'Drama');
-
+('Sirojiddin', 'Abdulla Qodiriy', "Inson tug'ilibtiki vafot etadi, uni hayotiy yollari tasvirlangan", 'public/img/15. Облака.jpg', 'Drama'),
+('Xamsa', 'Alisher Navoiy', 'Turkiy va Fors tillarida yozilgan judayam katta kitob', 'public/img/10. Цветы.jpg', 'Asar');
 
 CREATE TABLE users (
   id int AUTO_INCREMENT PRIMARY KEY,
