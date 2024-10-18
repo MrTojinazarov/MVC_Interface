@@ -67,7 +67,6 @@ class Model extends ModelAbstract
 
     public static function update($id, $data)
     {
-        dd($data);
         $query = "UPDATE " . static::$table . " 
                   SET name = :name, author = :author, genre = :genre, title = :title, photo = :photo 
                   WHERE id = :id";

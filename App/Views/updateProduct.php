@@ -25,7 +25,7 @@
             <div class="mb-3">
                 <label for="photo" class="form-label">Photo</label>
                 <input type="file" value="<?= $models->photo?>" name="photo" id="photo" class="form-control">
-                <img src="App/Views/Main/Uploads/<?= $models->photo?>" style="width: 100px;" alt="">
+                <img src="App/<?= $models->photo?>" style="width: 100px;" alt="">
             </div>
             <div class="col-2 offset-5">
                 <button type="submit" name="ok" class="btn btn-outline-warning" style="width: 100px;">Save</button>

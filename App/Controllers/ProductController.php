@@ -131,7 +131,7 @@ class ProductController
                     ];
                 }
 
-                if (Product::update($data, $id)) {
+                if (Product::update($id, $data)) {
                     header("Location: /");
                     exit;
                 } else {
