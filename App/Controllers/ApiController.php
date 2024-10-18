@@ -7,7 +7,9 @@ class ApiController
 {
     public function index()
     {
-        $models = Product::getAll();
+        $obj = new Product();
+
+        $models = $obj->getAll();
         return api($models);
     }
 

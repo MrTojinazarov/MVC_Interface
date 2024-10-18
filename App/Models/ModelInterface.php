@@ -4,11 +4,11 @@ namespace App\Models;
 
 interface ModelInterface
 {
-    public static function getAll();
-    public static function create($data);
-    public static function update($id, $data);
-    public static function delete($id);
-    public static function showOne($id);
+    public function getAll();
+    public function create($data);
+    public function update($id, $data);
+    public function delete($id);
+    public function showOne($id);
 }
 
 ?>

@@ -1,19 +1,18 @@
 <?php
+
 namespace App\Database;
 
 use PDO;
 
-class Database 
+class Database
 {
-    public static $host = "localhost";
-    public static $username = "root";
-    public static $password = "mr2344";
-    public static $dbname = "mvcdata";
+    public $host = "localhost";
+    public $username = "root";
+    public $password = "mr2344";
+    public $dbname = "mvcdata";
 
-    public static function connect()
+    public function connect()
     {
-        return new PDO("mysql:host=" . self::$host . ";dbname=" . self::$dbname , self::$username , self::$password);
+        return new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->username, $this->password);
     }
 }
-
-?>

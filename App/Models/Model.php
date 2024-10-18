@@ -9,23 +9,23 @@ class Model extends ModelAbstract
 {
     protected static $table;
 
-    public static function getAll()
+    public function getAll()
     {
         $sql = "SELECT * FROM " . static::$table;
-        $query = self::connect()->query($sql);
+        $query = $this->connect()->query($sql);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public static function CheckUserExists($data)
+    public function CheckUserExists($data)
     {
         $sql = "SELECT * FROM " . static::$table . " WHERE login = :login";
-        $query = self::connect()->prepare($sql);
+        $query = $this->connect()->prepare($sql);
         $query->bindParam(':login', $data['login']);
         $query->execute();
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public static function createUser($data)
+    public function createUser($data)
     {
 
         if ($data['password']) {
@@ -36,7 +36,7 @@ class Model extends ModelAbstract
         $values = ":" . implode(", :", array_keys($data));
 
         $sql = "INSERT INTO " . static::$table . " ({$keys}) VALUES ({$values})";
-        $stmt = self::connect()->prepare($sql);
+        $stmt = $this->connect()->prepare($sql);
 
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
@@ -47,7 +47,7 @@ class Model extends ModelAbstract
         }
     }
 
-    public static function getUserByLogin($data)
+    public function getUserByLogin($data)
     {
 
         if ($data['password']) {
@@ -55,20 +55,20 @@ class Model extends ModelAbstract
         }
 
         $sql = "SELECT * FROM " . static::$table . " WHERE login = :login AND password = :password";
-        $query = self::connect()->prepare($sql);
+        $query = $this->connect()->prepare($sql);
         $query->bindParam(':login', $data['login']);
         $query->bindParam(':password', $data['password']);
         $query->execute();
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public static function update($id, $data)
+    public function update($id, $data)
     {
         $query = "UPDATE " . static::$table . " 
                   SET name = :name, author = :author, genre = :genre, title = :title, photo = :photo 
                   WHERE id = :id";
     
-        $stmt = self::connect()->prepare($query);
+        $stmt = $this->connect()->prepare($query);
     
         $stmt->bindParam(':name', $data['name']);
         $stmt->bindParam(':author', $data['author']);
@@ -80,12 +80,12 @@ class Model extends ModelAbstract
         return $stmt->execute();
     }
     
-    public static function create($data)
+    public function create($data)
     {
         $sql = "INSERT INTO " . static::$table . " (name, author, genre, title, photo) 
                     VALUES (:name, :author, :genre, :title, :photo)";
     
-        $stmt = self::connect()->prepare($sql);
+        $stmt = $this->connect()->prepare($sql);
     
         $stmt->bindParam(':name', $data['name']);
         $stmt->bindParam(':author', $data['author']);
@@ -101,10 +101,10 @@ class Model extends ModelAbstract
     }
     
 
-    public static function delete($id)
+    public function delete($id)
     {
         $sql = "DELETE FROM " . static::$table . " WHERE id = :id";
-        $stmt = self::connect()->prepare($sql);
+        $stmt = $this->connect()->prepare($sql);
         $stmt->bindValue(":id", $id);
 
         if ($stmt->execute()) {
@@ -114,11 +114,11 @@ class Model extends ModelAbstract
         }
     }
 
-    public static function showOne($id)
+    public function showOne($id)
     {
 
         $sql = "SELECT * FROM " . static::$table . " WHERE id = :id";
-        $query = self::connect()->prepare($sql);
+        $query = $this->connect()->prepare($sql);
         $query->bindValue(':id', $id);
         $query->execute();
         return $query->fetch(PDO::FETCH_OBJ);

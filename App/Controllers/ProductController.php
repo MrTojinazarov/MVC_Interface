@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Helpers\Auth;
 use App\Models\Product;
 
@@ -15,7 +17,8 @@ class ProductController
     }
     public function product()
     {
-        $products = Product::getAll();
+        $obj = new Product();
+        $products = $obj->getAll();
         return view("product", "Books", $products);
     }
 
@@ -28,12 +31,12 @@ class ProductController
     {
         if (isset($_POST['ok'])) {
             if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-                $targetDir = __DIR__ . '/../public/img/'; 
+                $targetDir = __DIR__ . '/../public/img/';
                 $fileName = basename($_FILES['photo']['name']);
                 $targetFilePath = $targetDir . $fileName;
-    
+
                 if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
-                    $imgPath = 'public/img/' . $fileName;  
+                    $imgPath = 'public/img/' . $fileName;
                 } else {
                     echo "Faylni yuklashda xatolik yuz berdi!";
                     exit;
@@ -41,7 +44,7 @@ class ProductController
             } else {
                 $imgPath = null;
             }
-    
+
             $data = [
                 'name'        => $_POST['name'],
                 'author'      => $_POST['author'],
@@ -49,48 +52,50 @@ class ProductController
                 'title'       => $_POST['title'],
                 'img'         => $imgPath
             ];
-    
-            if(Product::create($data)){
+
+            $obj = new Product();
+
+            if ($obj->create($data)) {
                 header("Location: /");
                 exit();
             }
         }
     }
-    
+
 
     public function deleteProduct()
     {
-        if(isset($_POST['ok']) && !empty($_POST['id'])){
+        if (isset($_POST['ok']) && !empty($_POST['id'])) {
 
             $id = $_POST['id'];
+            $obj = new Product();
 
-            $delete = Product::delete($id);
+            $delete = $obj->delete($id);
 
-            if($delete){
+            if ($delete) {
                 header("Location: /");
                 exit();
-            }else{
+            } else {
                 echo "O'chirishda hatolik";
             }
-
         }
     }
 
     public function updateProduct()
     {
-    
-        if(isset($_POST['ok']) && !empty($_POST['id'])){
+
+        if (isset($_POST['ok']) && !empty($_POST['id'])) {
 
             $id = $_POST['id'];
+            $obj = new Product();
 
-            $product = Product::showOne($id);
-            if($product){
+            $product = $obj->showOne($id);
+            if ($product) {
                 return view("/updateProduct", "Update", $product);
                 exit();
-            }else{
+            } else {
                 echo "Bunday product yoq";
             }
-
         }
     }
 
@@ -129,8 +134,9 @@ class ProductController
                         'photo' => htmlspecialchars(strip_tags($_POST['old_photo']))
                     ];
                 }
+                $obj = new Product();
 
-                if (Product::update($id, $data)) {
+                if ($obj->update($id, $data)) {
                     header("Location: /");
                     exit;
                 } else {
@@ -144,21 +150,17 @@ class ProductController
 
     public function showUpdateApi()
     {
-        if(isset($_POST['ok']) && !empty($_POST['id'])){
+        if (isset($_POST['ok']) && !empty($_POST['id'])) {
 
             $id = $_POST['id'];
-
-            $product = Product::showOne($id);
-            if($product){
+            $obj = new Product();
+            $product = $obj->showOne($id);
+            if ($product) {
                 return view("/showUpdateApi", "Show Api", $product);
                 exit();
-            }else{
+            } else {
                 echo "Bunday product yoq";
             }
-
         }
     }
- 
 }
-
-?>
