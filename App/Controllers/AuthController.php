@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 use App\Models\User;
-use App\Helpers\Auth;
 
 class AuthController
 {

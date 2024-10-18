@@ -1,6 +1,7 @@
 <div class="row mt-3">
     <div class="col-12">
         <a href="addProduct" class="btn btn-outline-primary">Add Book</a>
+        <a href="api" class="btn btn-outline-primary">API ga kelgan ma'lumot</a>
     </div>
     <div class="col-12 mt-3">
 

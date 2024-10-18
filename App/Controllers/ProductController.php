@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use App\Helpers\Auth;
 use App\Models\Product;
-use App\Models\User;
 
 class ProductController
 {

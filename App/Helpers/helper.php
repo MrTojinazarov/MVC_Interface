@@ -35,4 +35,20 @@ if(!function_exists('check')){
         Auth::check();
     }
 }
+
+if(!function_exists('api')){
+    function api($data, $status = 200)
+    {
+        header("Content_Type: aplication/json");
+        http_response_code($status);
+
+        echo json_encode([
+            'status' => $status,
+            'data' => $data
+        ], JSON_PRETTY_PRINT);
+        exit();
+
+    }
+
+}
 ?>
